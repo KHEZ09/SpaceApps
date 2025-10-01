@@ -1,48 +1,14 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f3f4f6;
-  margin: 0;
-  padding: 20px;
-  text-align: center;
-}
+body { font-family: Arial, sans-serif; background:#f7f9fc; color:#222; }
+.container{ max-width:900px; margin:20px auto; padding:12px; }
+#panel{ display:flex; gap:16px; }
+#info{ width: 40%; background:white; padding:12px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+#chat{ width:60%; background:white; padding:12px; border-radius:8px; display:flex; flex-direction:column; }
+#messages{ flex:1; height:300px; overflow:auto; padding:8px; }
+.msg{ margin:6px 0; padding:8px 10px; border-radius:6px; max-width:85%; }
+.msg.user{ background:#d9eefc; margin-left:auto; text-align:right; }
+.msg.bot{ background:#eef2f7; margin-right:auto; }
+#input-area{ display:flex; gap:8px; margin-top:8px; }
+#user-input{ flex:1; padding:8px; border-radius:6px; border:1px solid #ccc; }
+button{ padding:8px 12px; border-radius:6px; background:#2b7de9; color:white; border:none; cursor:pointer; }
 
-h1 {
-  margin-bottom: 20px;
-}
 
-.map-container {
-  position: relative;
-  display: inline-block;
-}
-
-svg {
-  width: 80%;
-  max-width: 1200px;
-  height: auto;
-  border: 1px solid #ccc;
-}
-
-.country {
-  fill: #cce5ff;
-  stroke: #333;
-  stroke-width: 1;
-  cursor: pointer;
-  transition: fill 0.2s;
-}
-
-.country:hover {
-  fill: #007bff;
-}
-
-/* Tooltip */
-#tooltip {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 5px 10px;
-  font-size: 14px;
-  border-radius: 6px;
-  pointer-events: none;
-  display: none;
-  white-space: nowrap;
-}
