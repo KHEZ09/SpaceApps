@@ -1,14 +1,28 @@
 import os
 import json
+import datetime
 from flask import Flask, render_template, request, jsonify
 from model import Predictor
 
 app = Flask(__name__)
-predictor = Predictor()  # loads model if exists or uses fallback
+predictor = Predictor()  # carga el modelo si existe, o usa fallback
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    # Ubicación fija por ahora
+    location = "Bogotá, Colombia"
+    last_update = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # Obtiene predicción inicial con lat/lon de Bogotá
+    result = predictor.get_prediction(4.7110, -74.0721, 24)
+
+    # Renderiza el HTML con datos
+    return render_template(
+        "index.html",
+        location=location,
+        last_update=last_update,
+        prediction=result.get("explanation", "Sin datos disponibles")
+    )
 
 @app.route("/api/predict", methods=["POST"])
 def api_predict():
@@ -26,6 +40,7 @@ def api_advice():
     payload = request.json or {}
     aq = payload.get("aq_index")       # e.g., 1-5 scale or pm2.5 value
     pm25 = payload.get("pm25")
+
     # simple rule engine for advice; predictor already gives some text, but provide structured advice
     advice = []
     if pm25 is None:
@@ -47,3 +62,4 @@ def api_advice():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
+

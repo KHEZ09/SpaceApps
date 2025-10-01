@@ -1,19 +1,20 @@
 <!doctype html>
 <html>
-<head>
+<head>  
   <meta charset="utf-8">
   <title>AirBytes - Bogotá Assistant</title>
-  <link rel="stylesheet" href="/static/css/styles.css">
-</head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head> 
 <body>
   <div class="container">
     <h1>AirBytes — Bogotá (demo)</h1>
     <div id="main">
       <div id="panel">
         <div id="info">
-          <p><strong>Ubicación:</strong> Bogotá, Colombia</p>
-          <p id="status">Última actualización: --</p>
-          <p id="pred"></p>
+          <p><strong>Ubicación:</strong> {{ location }}</p>
+          <p id="status"><strong>Última actualización:</strong> {{ last_update }}</p>
+          <p id="pred">{{ prediction }}</p>
+
         </div>
         <div id="chat">
           <div id="messages"></div>
@@ -25,8 +26,9 @@
       </div>
     </div>
   </div>
-<script src="/static/js/chat.js"></script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </body>
 </html>
+
 
 
