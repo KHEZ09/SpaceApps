@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.map-container {
+  position: relative;
+  display: inline-block;
+}
+
+svg {
+  width: 80%;
+  max-width: 1200px;
+  height: auto;
+  border: 1px solid #ccc;
+}
+
+.country {
+  fill: #cce5ff;
+  stroke: #333;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill 0.2s;
+}
+
+.country:hover {
+  fill: #007bff;
+}
+
+/* Tooltip */
+#tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  pointer-events: none;
+  display: none;
+  white-space: nowrap;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Interactivo del Mundo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Mapa Interactivo del Mundo</h1>
+
+  <div class="map-container">
+    <!-- SVG del mapa mundial -->
+    <!-- Puedes usar un mapa SVG con paths de cada país -->
+    <!-- Ejemplo simplificado -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1001">
+      <!-- Ejemplo de algunos países -->
+      <path d="M100,200 L200,200 L200,300 L100,300 Z" class="country" data-name="País Ejemplo 1"/>
+      <path d="M300,200 L400,200 L400,300 L300,300 Z" class="country" data-name="País Ejemplo 2"/>
+      <path d="M500,200 L600,200 L600,300 L500,300 Z" class="country" data-name="País Ejemplo 3"/>
+      <!-- Aquí iría el resto del mapa mundial en paths -->
+    </svg>
+
+    <!-- Tooltip -->
+    <div id="tooltip"></div>
+  </div>
+
+  <script>
+    const tooltip = document.getElementById("tooltip");
+    const countries = document.querySelectorAll(".country");
+
+    countries.forEach(country => {
+      country.addEventListener("mousemove", (e) => {
+        tooltip.style.left = e.pageX + 10 + "px";
+        tooltip.style.top = e.pageY + 10 + "px";
+        tooltip.textContent = country.dataset.name;
+        tooltip.style.display = "block";
+      });
+
+      country.addEventListener("mouseleave", () => {
+        tooltip.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>
