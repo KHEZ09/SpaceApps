@@ -12,3 +12,4 @@ model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 joblib.dump(model, "model/model.pkl")
 print("Saved model to model/model.pkl")
+#a
