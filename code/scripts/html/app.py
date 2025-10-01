@@ -1,7 +1,7 @@
 import os
 import json
 from flask import Flask, render_template, request, jsonify
-from model.predictor import Predictor
+from model import Predictor
 
 app = Flask(__name__)
 predictor = Predictor()  # loads model if exists or uses fallback
